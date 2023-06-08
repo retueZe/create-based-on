@@ -4,7 +4,7 @@
   "version": "1.0.0-a.1",
   "author": "retueze",
   "license": "MIT",
-  "description": "Build tool based on custom templates.",
+  "description": "CLI tool for configuring project templates.",
   "keywords": [
     "package",
     "project",
@@ -12,7 +12,10 @@
     "initializer",
     "build",
     "template",
-    "configure"
+    "configure",
+    "cli",
+    "util",
+    "utility"
   ],
   "repository": {
     "type": "git",
