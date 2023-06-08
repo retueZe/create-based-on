@@ -22,8 +22,12 @@
     "url": "https://github.com/retueZe/create-by-template"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
+  "bin": {
+    "create-by-template": "bin/create-by-template.cjs"
+  },
   "exports": {
     "./package.json": "./package.json"
   },
