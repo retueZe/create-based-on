@@ -1,13 +1,10 @@
-import minimist from 'minimist'
 import { install } from './install'
 import chalk from 'chalk'
-import { resolve } from 'node:path'
+import { parseArgs } from './parseArgs'
 
 export default async function main(): Promise<void> {
     try {
-        const argv = minimist(process.argv.slice(2))
-        const templateLocation = argv._[0] ?? null
-        const installDirectory = resolve(argv._[1] ?? '.')
+        const {templateLocation, installDirectory} = parseArgs()
 
         if (templateLocation === null) throw new Error('No template location provided.')
 
