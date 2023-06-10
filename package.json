@@ -42,13 +42,22 @@
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.1",
     "@rollup/plugin-typescript": "^11.1.0",
+    "@types/minimist": "^1.2.2",
     "@types/node": "^20.2.5",
     "@types/prompts": "^2.4.4",
+    "@types/tar": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
     "eslint-plugin-deprecation": "^1.4.1",
     "rollup": "^3.21.2",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "minimist": "^1.2.0",
+    "project-factory": "file:../project-factory",
+    "prompts": "^2.4.0",
+    "tar": "^6.1.0"
   }
 }

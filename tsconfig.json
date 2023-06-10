@@ -2,7 +2,9 @@
     "include": ["src/**/*.ts"],
     "compilerOptions": {
         "target": "es2022",
+        "module": "commonjs",
         "moduleResolution": "nodenext",
+        "esModuleInterop": true,
         "lib": ["es2022", "dom"],
         "strict": true,
         "noImplicitAny": true,

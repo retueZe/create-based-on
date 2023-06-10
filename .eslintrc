@@ -12,10 +12,10 @@
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
         "eqeqeq": "error",
-        "no-console": "warn",
         "no-constant-condition": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-empty-function": "off",
         "deprecation/deprecation": "warn"
     }
 }
