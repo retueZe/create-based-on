@@ -14,9 +14,9 @@ export async function npmInstaller(archievePath: string, directory: string): Pro
         ? archievePath.slice(versionSeparatorIndex + 1)
         : 'latest'
 
-    const _package = await (await fetch(`http://registry.npmjs.com/${packageName}`)).json()
+    const _package = await (await fetch(`https://registry.npmjs.com/${packageName}`)).json()
     const archieveVersion = _package['dist-tags'][packageVersion] ?? packageVersion
-    const tarResponse = await fetch(`http://registry.npmjs.org/${packageName}/-/${packageName}-${archieveVersion}.tgz`)
+    const tarResponse = await fetch(`https://registry.npmjs.org/${packageName}/-/${packageName}-${archieveVersion}.tgz`)
 
     if (!(await exists(directory))) await mkdir(directory)
 

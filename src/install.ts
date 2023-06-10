@@ -1,4 +1,4 @@
-import { fileInstaller, npmInstaller, tarInstaller } from './installers'
+import { fileInstaller, githubInstaller, npmInstaller, tarInstaller } from './installers'
 
 // examples:
 // `file:../my-template`
@@ -6,13 +6,12 @@ import { fileInstaller, npmInstaller, tarInstaller } from './installers'
 // `github:retueZe/repo`
 // `npm:@retueze/pkg@1.2.3-rc.4`
 const INPUT_PATTERN = /^(?:(?<type>file|tar|github|npm):)?(?<content>.*)$/
-const PACKAGE_NAME_PATTERN = /^(?:@(?:[a-z0-9-*~][a-z0-9-*._~]*)?\/)?[a-z0-9-~][a-z0-9-._~]*$/i
 
 type InstallerType = 'file' | 'tar' | 'github' | 'npm'
 const INSTALLERS: Readonly<Record<InstallerType, TemplateInstaller>> = {
     'file': fileInstaller,
     'tar': tarInstaller,
-    'github': fileInstaller, // TODO: stub
+    'github': githubInstaller,
     'npm': npmInstaller
 }
 const DEFAULT_INSTALLER_TYPE: InstallerType = 'github'
