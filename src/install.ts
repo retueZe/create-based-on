@@ -1,4 +1,4 @@
-import { fileInstaller, tarInstaller } from './installers'
+import { fileInstaller, npmInstaller, tarInstaller } from './installers'
 
 // examples:
 // `file:../my-template`
@@ -13,7 +13,7 @@ const INSTALLERS: Readonly<Record<InstallerType, TemplateInstaller>> = {
     'file': fileInstaller,
     'tar': tarInstaller,
     'github': fileInstaller, // TODO: stub
-    'npm': fileInstaller // TODO: stub
+    'npm': npmInstaller
 }
 const DEFAULT_INSTALLER_TYPE: InstallerType = 'github'
 
