@@ -1,10 +1,13 @@
 import chalk from 'chalk'
 import { access } from 'node:fs/promises'
 import { dirname, join, relative, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { createTemplate, install, ITemplate, TemplateArgs } from 'project-factory'
 import prompts from 'prompts'
 import { exists } from '../exists.js'
 import { parseTemplateConfig } from '../parseTemplateConfig.js'
+
+const __filename = fileURLToPath(import.meta.url)
 
 const TEMPLATE_CONFIG_FILE_NAMES: readonly string[] = [
     'template.js',

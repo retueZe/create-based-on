@@ -4,7 +4,7 @@ import * as path from 'node:path'
 
 const EXTERNAL = [
     'minimist', 'chalk', 'tar', 'prompts', 'project-factory',
-    'node:fs/promises', 'node:path', 'node:fs', 'node:stream'
+    'node:fs/promises', 'node:path', 'node:fs', 'node:stream', 'node:url'
 ]
 
 function createEntryFileNames(extension) {

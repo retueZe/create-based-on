@@ -55,7 +55,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "chalk": "^5.2.0",
+    "chalk": "^4.1.0",
     "minimist": "^1.2.0",
     "project-factory": "file:../project-factory",
     "prompts": "^2.4.0",
