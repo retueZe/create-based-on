@@ -1,15 +1,16 @@
 import { createReadStream, ReadStream } from 'node:fs'
-import * as tar from 'tar'
+import { Readable } from 'node:stream'
+import type { ITemplate } from 'project-factory'
+import { extractTarball } from '../extractTarball'
 import { fileInstaller } from './file'
 
-export async function tarInstaller(archievePath: string, directory: string): Promise<void> {
+export async function tarInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
     let archiveFileStream: ReadStream | null = null
 
     try {
         archiveFileStream = createReadStream(archievePath)
-        archiveFileStream.pipe(tar.extract({
-            C: directory
-        }))
+
+        await extractTarball(Readable.toWeb(archiveFileStream) as ReadableStream<Uint8Array>, directory)
     } finally {
         const stream = archiveFileStream
 
@@ -21,5 +22,5 @@ export async function tarInstaller(archievePath: string, directory: string): Pro
             })
     }
 
-    await fileInstaller(directory, directory)
+    return await fileInstaller(directory, directory)
 }

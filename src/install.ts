@@ -1,10 +1,6 @@
+import type { ITemplate } from 'project-factory'
 import { fileInstaller, githubInstaller, npmInstaller, tarInstaller } from './installers'
 
-// examples:
-// `file:../my-template`
-// `tar:/c/Users/User/Downloads/template.tgz`
-// `github:retueZe/repo`
-// `npm:@retueze/pkg@1.2.3-rc.4`
 const INPUT_PATTERN = /^(?:(?<type>file|tar|github|npm):)?(?<content>.*)$/
 
 type InstallerType = 'file' | 'tar' | 'github' | 'npm'
@@ -16,9 +12,9 @@ const INSTALLERS: Readonly<Record<InstallerType, TemplateInstaller>> = {
 }
 const DEFAULT_INSTALLER_TYPE: InstallerType = 'github'
 
-export type TemplateInstaller = (address: string, directory: string) => Promise<void>
+export type TemplateInstaller = (address: string, directory: string) => Promise<ITemplate<any>>
 
-export function install(templateLocation: string, directory: string): Promise<void> {
+export function install(templateLocation: string, directory: string): Promise<ITemplate<any>> {
     const match = templateLocation.match(INPUT_PATTERN)
 
     if (match === null) throw new Error('Bad template input.')

@@ -1,10 +1,10 @@
-import { mkdir } from 'node:fs/promises'
-import { Transform, Writable } from 'node:stream'
-import tar from 'tar'
-import { exists } from '../exists'
+import chalk from 'chalk'
+import type { ITemplate } from 'project-factory'
+import { extractTarball } from '../extractTarball'
+import { verboseFetch } from '../verboseFetch'
 import { fileInstaller } from './file'
 
-export async function npmInstaller(archievePath: string, directory: string): Promise<void> {
+export async function npmInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
     const versionSeparatorIndex = archievePath.lastIndexOf('@')
     const hasVersion = versionSeparatorIndex > 0.5
     const packageName = hasVersion
@@ -14,21 +14,17 @@ export async function npmInstaller(archievePath: string, directory: string): Pro
         ? archievePath.slice(versionSeparatorIndex + 1)
         : 'latest'
 
-    const _package = await (await fetch(`https://registry.npmjs.com/${packageName}`)).json()
+    const _package = await (await verboseFetch(`https://registry.npmjs.com/${packageName}`)).json()
     const archieveVersion = _package['dist-tags'][packageVersion] ?? packageVersion
-    const tarResponse = await fetch(`https://registry.npmjs.org/${packageName}/-/${packageName}-${archieveVersion}.tgz`)
 
-    if (!(await exists(directory))) await mkdir(directory)
+    if (packageVersion !== archieveVersion) console.log(
+        chalk.gray`Dist-tag {yellow ${packageVersion}} was ` +
+        chalk.gray`referring to v{yellow ${archieveVersion}}.`)
 
-    const tarWritable = tar.extract({
-        C: directory,
-        stripComponents: 1
-    })
-    const buffer = new Transform({
-        transform: (chunk, encoding, callback) => callback(null, chunk)
-    })
-    buffer.pipe(tarWritable)
-    await tarResponse.body!.pipeTo(Writable.toWeb(buffer))
+    const tarResponse = await verboseFetch(
+        `https://registry.npmjs.org/${packageName}/-/${packageName}-${archieveVersion}.tgz`)
 
-    await fileInstaller(directory, directory)
+    await extractTarball(tarResponse.body!, directory)
+
+    return await fileInstaller(directory, directory)
 }

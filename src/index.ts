@@ -11,11 +11,11 @@ export default async function main(): Promise<void> {
 
         if (templateLocation === null) throw new Error('No template location provided.')
 
-        console.log(chalk.bold(`Installing "${templateLocation}" to "${installDirectory}"...`))
+        console.log(chalk`Installing {cyan ${templateLocation}} to {green ${installDirectory}}...`)
 
-        await install(templateLocation, installDirectory)
+        const template = await install(templateLocation, installDirectory)
 
-        console.log(chalk.bold('Template has been successfully installed.'))
+        console.log(chalk`Template {cyan ${template.name}} has been successfully installed.`)
     } catch (error: any) {
         if (typeof error !== 'object' || error === null) throw error
         if (!('message' in error)) throw error

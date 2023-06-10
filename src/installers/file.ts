@@ -1,6 +1,7 @@
+import chalk from 'chalk'
 import { access } from 'node:fs/promises'
 import { dirname, join, relative, resolve } from 'node:path'
-import { createTemplate, install, TemplateArgs } from 'project-factory'
+import { createTemplate, install, ITemplate, TemplateArgs } from 'project-factory'
 import prompts from 'prompts'
 import { exists } from '../exists'
 import { parseTemplateConfig } from '../parseTemplateConfig'
@@ -11,7 +12,7 @@ const TEMPLATE_CONFIG_FILE_NAMES: readonly string[] = [
     'template.mjs'
 ]
 
-export async function fileInstaller(templateDirectory: string, directory: string): Promise<void> {
+export async function fileInstaller(templateDirectory: string, directory: string): Promise<ITemplate<any>> {
     await access(templateDirectory)
 
     let templateConfigPath: string | null = null
@@ -26,6 +27,9 @@ export async function fileInstaller(templateDirectory: string, directory: string
     }
 
     if (templateConfigPath === null) throw new Error('Template config not found.')
+
+    const absoluteTemplateConfigPath = resolve(dirname(__filename), templateConfigPath)
+    console.log(chalk`Importing {green ${absoluteTemplateConfigPath}}...`)
 
     const importedTemplateConfig = await import(templateConfigPath)
 
@@ -51,6 +55,8 @@ export async function fileInstaller(templateDirectory: string, directory: string
     const template = await createTemplate(args)
 
     await install(directory, template)
+
+    return template
 }
 async function chooseTemplateArgs(args: readonly TemplateArgs<any, any>[]): Promise<TemplateArgs<any, any>> {
     let cancelled = false
