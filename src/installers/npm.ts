@@ -1,8 +1,8 @@
 import chalk from 'chalk'
 import type { ITemplate } from 'project-factory'
-import { extractTarball } from '../extractTarball'
-import { verboseFetch } from '../verboseFetch'
-import { fileInstaller } from './file'
+import { extractTarball } from '../extractTarball.js'
+import { verboseFetch } from '../verboseFetch.js'
+import { fileInstaller } from './file.js'
 
 export async function npmInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
     const versionSeparatorIndex = archievePath.lastIndexOf('@')

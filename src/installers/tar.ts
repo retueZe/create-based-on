@@ -1,8 +1,8 @@
 import { createReadStream, ReadStream } from 'node:fs'
 import { Readable } from 'node:stream'
 import type { ITemplate } from 'project-factory'
-import { extractTarball } from '../extractTarball'
-import { fileInstaller } from './file'
+import { extractTarball } from '../extractTarball.js'
+import { fileInstaller } from './file.js'
 
 export async function tarInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
     let archiveFileStream: ReadStream | null = null

@@ -2,6 +2,11 @@ import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 import * as path from 'node:path'
 
+const EXTERNAL = [
+    'minimist', 'chalk', 'tar', 'prompts', 'project-factory',
+    'node:fs/promises', 'node:path', 'node:fs', 'node:stream'
+]
+
 function createEntryFileNames(extension) {
     extension ??= '.js'
 
@@ -32,17 +37,17 @@ function applyDefaultConfig(config) {
     return {
         ...config,
         input: createInput(['']),
-        external: []
+        external: EXTERNAL
     }
 }
 
-/** @type {import('rollup').RollupOptions[]} */
+/** @type {import('rollup').RollupOptions} */
 const config = {
     output: {
         dir: 'dist',
-        entryFileNames: createEntryFileNames('.cjs'),
-        chunkFileNames: '.chunks/[name]-[hash].cjs',
-        format: 'cjs'
+        entryFileNames: createEntryFileNames('.js'),
+        chunkFileNames: '.chunks/[name]-[hash].js',
+        format: 'esm'
     },
     plugins: [
         typescript(),

@@ -3,8 +3,8 @@ import { access } from 'node:fs/promises'
 import { dirname, join, relative, resolve } from 'node:path'
 import { createTemplate, install, ITemplate, TemplateArgs } from 'project-factory'
 import prompts from 'prompts'
-import { exists } from '../exists'
-import { parseTemplateConfig } from '../parseTemplateConfig'
+import { exists } from '../exists.js'
+import { parseTemplateConfig } from '../parseTemplateConfig.js'
 
 const TEMPLATE_CONFIG_FILE_NAMES: readonly string[] = [
     'template.js',

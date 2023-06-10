@@ -1,6 +1,6 @@
-import { install } from './install'
+import { install } from './install.js'
 import chalk from 'chalk'
-import { parseArgs } from './parseArgs'
+import { parseArgs } from './parseArgs.js'
 
 export default async function main(): Promise<void> {
     try {

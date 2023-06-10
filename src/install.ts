@@ -1,5 +1,5 @@
 import type { ITemplate } from 'project-factory'
-import { fileInstaller, githubInstaller, npmInstaller, tarInstaller } from './installers'
+import { fileInstaller, githubInstaller, npmInstaller, tarInstaller } from './installers/index.js'
 
 const INPUT_PATTERN = /^(?:(?<type>file|tar|github|npm):)?(?<content>.*)$/
 

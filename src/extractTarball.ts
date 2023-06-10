@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { mkdir } from 'node:fs/promises'
 import { Transform, Writable } from 'node:stream'
-import { exists } from './exists'
+import { exists } from './exists.js'
 import tar from 'tar'
 
 export async function extractTarball(stream: ReadableStream<Uint8Array>, directory: string): Promise<void> {

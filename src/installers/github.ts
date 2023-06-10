@@ -1,8 +1,8 @@
-import { fileInstaller } from './file'
+import { fileInstaller } from './file.js'
 import type { ITemplate } from 'project-factory'
-import { verboseFetch } from '../verboseFetch'
+import { verboseFetch } from '../verboseFetch.js'
 import chalk from 'chalk'
-import { extractTarball } from '../extractTarball'
+import { extractTarball } from '../extractTarball.js'
 
 export async function githubInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
     const response = await(await verboseFetch(`https://api.github.com/repos/${archievePath}`)).json()
