@@ -20,7 +20,10 @@ export default async function main(): Promise<void> {
         if (typeof error !== 'object' || error === null) throw error
         if (!('message' in error)) throw error
 
-        throw error
-        // console.log(chalk.red('Initialization failed: ' + error.message))
+        if (process.env.NODE_ENV === 'development') throw error
+
+        console.log(chalk.red('Initialization failed: ' + error.message))
+
+        process.exit(1)
     }
 }
