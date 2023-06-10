@@ -15,6 +15,8 @@ const TEMPLATE_CONFIG_FILE_NAMES: readonly string[] = [
 export async function fileInstaller(templateDirectory: string, directory: string): Promise<ITemplate<any>> {
     await access(templateDirectory)
 
+    console.log('Looking for a template config...')
+
     let templateConfigPath: string | null = null
 
     for (const configFileName of TEMPLATE_CONFIG_FILE_NAMES) {

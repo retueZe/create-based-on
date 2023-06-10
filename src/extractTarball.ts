@@ -7,7 +7,7 @@ import tar from 'tar'
 export async function extractTarball(stream: ReadableStream<Uint8Array>, directory: string): Promise<void> {
     if (!(await exists(directory))) await mkdir(directory)
 
-    console.log(chalk`Extracting tarball to {green ${directory}}...`)
+    console.log(chalk`Extracting tarball...`)
 
     const tarWritable = tar.extract({
         C: directory,
