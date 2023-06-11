@@ -1,6 +1,7 @@
 import { install } from './install.js'
 import chalk from 'chalk'
 import { parseArgs } from './parseArgs.js'
+import { resolve } from 'node:path'
 
 export default async function main(): Promise<void> {
     try {
@@ -8,7 +9,8 @@ export default async function main(): Promise<void> {
 
         if (templateLocation === null) throw new Error('No template location provided.')
 
-        console.log(chalk`Installing {cyan ${templateLocation}} to {green ${installDirectory}}...`)
+        const absoluteInstallDirectory = resolve(installDirectory)
+        console.log(chalk`Installing {cyan ${templateLocation}} to {green ${absoluteInstallDirectory}}...`)
 
         const template = await install(templateLocation, installDirectory)
 
