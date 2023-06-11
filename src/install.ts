@@ -19,8 +19,10 @@ export function install(templateLocation: string, directory: string): Promise<IT
 
     if (match === null) throw new Error('Bad template input.')
 
-    const type = match.groups!.type as InstallerType | ''
-    const installer = INSTALLERS[type === '' ? DEFAULT_INSTALLER_TYPE : type]
+    const type = match.groups!.type as InstallerType | undefined
+    const installer = INSTALLERS[typeof type === 'undefined'
+        ? DEFAULT_INSTALLER_TYPE
+        : type]
 
     return installer(match.groups!.content, directory)
 }
