@@ -15,7 +15,7 @@ export async function githubInstaller(archievePath: string, directory: string): 
 
     const tarResponse = await verboseFetch(`https://github.com/${archievePath}/tarball/${defaultBranch}`)
 
-    if ('message' in response) throw new Error('GitHub API error: ' + response.message)
+    if (!tarResponse.ok) throw new Error('GitHub API error: ' + (await tarResponse.json()).message)
 
     await extractTarball(tarResponse.body!, directory)
 
