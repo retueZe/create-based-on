@@ -12,9 +12,9 @@ export default async function main(): Promise<void> {
         const absoluteInstallDirectory = resolve(installDirectory)
         console.log(chalk`Installing {cyan ${templateLocation}} to {green ${absoluteInstallDirectory}}...`)
 
-        const template = await install(templateLocation, installDirectory)
+        await install(templateLocation, installDirectory)
 
-        console.log(chalk`Template {cyan ${template.name}} has been successfully installed.`)
+        console.log('Template has been successfully installed.')
     } catch (error: any) {
         if (typeof error !== 'object' || error === null) throw error
         if (!('message' in error)) throw error

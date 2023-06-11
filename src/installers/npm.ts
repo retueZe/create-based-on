@@ -4,7 +4,7 @@ import { extractTarball } from '../extractTarball.js'
 import { verboseFetch } from '../verboseFetch.js'
 import { fileInstaller } from './file.js'
 
-export async function npmInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
+export async function npmInstaller(archievePath: string, directory: string): Promise<ITemplate> {
     const versionSeparatorIndex = archievePath.lastIndexOf('@')
     const hasVersion = versionSeparatorIndex > 0.5
     const packageName = hasVersion

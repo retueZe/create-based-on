@@ -35,7 +35,7 @@
   "scripts": {
     "lint": "eslint .",
     "build:prod": "npm run lint && rollup -c",
-    "build:dev": "tsc --outDir dist --inlineSourceMap --module commonjs",
+    "build:dev": "tsc --outDir dist --inlineSourceMap",
     "clean": "rm -rf dist",
     "prepare": "npm run clean && npm run build:prod",
     "postpublish": "npm run clean"
@@ -57,7 +57,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "minimist": "^1.2.0",
-    "project-factory": "1.0.0-a.2",
+    "project-factory": "file:../project-factory",
     "prompts": "^2.4.0",
     "tar": "^6.1.0"
   }

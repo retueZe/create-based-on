@@ -7,7 +7,7 @@ export async function httpInstaller(
     address: string,
     directory: string,
     secure?: boolean | null
-): Promise<ITemplate<any>> {
+): Promise<ITemplate> {
     secure ??= false
     const url = 'http' +
         (secure ? 's:' : ':') +

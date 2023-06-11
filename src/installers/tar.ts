@@ -4,7 +4,7 @@ import type { ITemplate } from 'project-factory'
 import { extractTarball } from '../extractTarball.js'
 import { fileInstaller } from './file.js'
 
-export async function tarInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
+export async function tarInstaller(archievePath: string, directory: string): Promise<ITemplate> {
     let archiveFileStream: ReadStream | null = null
 
     try {

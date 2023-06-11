@@ -4,7 +4,7 @@ import { verboseFetch } from '../verboseFetch.js'
 import chalk from 'chalk'
 import { extractTarball } from '../extractTarball.js'
 
-export async function githubInstaller(archievePath: string, directory: string): Promise<ITemplate<any>> {
+export async function githubInstaller(archievePath: string, directory: string): Promise<ITemplate> {
     const response = await(await verboseFetch(`https://api.github.com/repos/${archievePath}`)).json()
 
     if ('message' in response) throw new Error('GitHub API error: ' + response.message)
