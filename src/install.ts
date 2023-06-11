@@ -1,14 +1,16 @@
 import type { ITemplate } from 'project-factory'
-import { fileInstaller, githubInstaller, npmInstaller, tarInstaller } from './installers/index.js'
+import { fileInstaller, githubInstaller, httpInstaller, httpsInstaller, npmInstaller, tarInstaller } from './installers/index.js'
 
-const INPUT_PATTERN = /^(?:(?<type>file|tar|github|npm):)?(?<content>.*)$/
+const INPUT_PATTERN = /^(?:(?<type>file|tar|github|npm|http|https):)?(?<content>.*)$/
 
-type InstallerType = 'file' | 'tar' | 'github' | 'npm'
+type InstallerType = 'file' | 'tar' | 'github' | 'npm' | 'http' | 'https'
 const INSTALLERS: Readonly<Record<InstallerType, TemplateInstaller>> = {
     'file': fileInstaller,
     'tar': tarInstaller,
     'github': githubInstaller,
-    'npm': npmInstaller
+    'npm': npmInstaller,
+    'http': httpInstaller,
+    'https': httpsInstaller
 }
 const DEFAULT_INSTALLER_TYPE: InstallerType = 'github'
 
