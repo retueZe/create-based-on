@@ -25,19 +25,18 @@ async function findRepo(path: string): Promise<[any, string]> {
         path,
         path + '-project-template'
     ]
-    let response: Response | null = null
+    let firstBody: any = undefined
 
     for (const path of paths) {
-        response = await verboseFetch(`https://api.github.com/repos/${path}`)
-
-        if (Math.abs(response.status - 404) < 0.5) continue
-
+        const response = await verboseFetch(`https://api.github.com/repos/${path}`)
         const body = await response.json()
 
+        if (typeof firstBody === 'undefined') firstBody = body
+        if (Math.abs(response.status - 404) < 0.5) continue
         if (!response.ok) throw new Error('GitHub API error: ' + body.message)
 
         return [body, path]
     }
 
-    return [await response!.json(), path]
+    throw new Error('GitHub API error: ' + firstBody.message)
 }
