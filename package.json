@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "create-by-template",
-  "version": "1.0.0-a.5",
+  "version": "1.0.0-a.6",
   "author": "retueze",
   "license": "MIT",
   "description": "CLI tool for configuring project templates.",
@@ -57,7 +57,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "minimist": "^1.2.0",
-    "project-factory": "1.0.0-a.4",
+    "project-factory": "1.0.0-a.5",
     "prompts": "^2.4.0",
     "tar": "^6.1.0"
   }
