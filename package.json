@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "create-by-template",
-  "version": "1.0.0-a.8",
+  "version": "1.0.0-a.9",
   "author": "retueze",
   "license": "MIT",
   "description": "CLI tool for project scaffolding.",
@@ -57,7 +57,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "minimist": "^1.2.0",
-    "project-factory": "1.0.0-a.8",
+    "project-factory": "1.0.0-a.9",
     "prompts": "^2.4.0",
     "tar": "^6.1.0"
   }
