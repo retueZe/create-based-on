@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "create-by-template",
-  "version": "1.0.0-a.7",
+  "version": "1.0.0-a.8",
   "author": "retueze",
   "license": "MIT",
   "description": "CLI tool for project scaffolding.",
