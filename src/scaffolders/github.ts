@@ -1,10 +1,10 @@
-import { fileInstaller } from './file.js'
+import { fileScaffolder } from './file.js'
 import type { ITemplate } from 'project-factory'
 import { verboseFetch } from '../verboseFetch.js'
 import chalk from 'chalk'
 import { extractTarball } from '../extractTarball.js'
 
-export async function githubInstaller(archievePath: string, directory: string): Promise<ITemplate> {
+export async function githubScaffolder(archievePath: string, directory: string): Promise<ITemplate> {
     const [response, path] = await findRepo(archievePath)
     const defaultBranch = response.default_branch
 
@@ -16,7 +16,7 @@ export async function githubInstaller(archievePath: string, directory: string): 
 
     await extractTarball(tarResponse.body!, directory)
 
-    return await fileInstaller(directory, directory)
+    return await fileScaffolder(directory, directory)
 }
 async function findRepo(path: string): Promise<[any, string]> {
     if (!path.includes('/')) path = 'project-factory-templates/' + path

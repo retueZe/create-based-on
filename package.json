@@ -4,7 +4,7 @@
   "version": "1.0.0-a.7",
   "author": "retueze",
   "license": "MIT",
-  "description": "CLI tool for configuring project templates.",
+  "description": "CLI tool for project scaffolding.",
   "keywords": [
     "package",
     "project",
@@ -57,7 +57,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "minimist": "^1.2.0",
-    "project-factory": "1.0.0-a.6",
+    "project-factory": "1.0.0-a.8",
     "prompts": "^2.4.0",
     "tar": "^6.1.0"
   }

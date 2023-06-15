@@ -2,7 +2,7 @@ import minimist from 'minimist'
 
 export type Args = {
     templateLocation: string
-    installDirectory: string
+    prefix: string
 }
 
 export function parseArgs(): Args {
@@ -14,8 +14,8 @@ export function parseArgs(): Args {
             ?? args['t']
             ?? args._[position++]
             ?? null,
-        installDirectory: args['prefix']
-            ?? args['d']
+        prefix: args['prefix']
+            ?? args['p']
             ?? args._[position++]
             ?? '.'
     }

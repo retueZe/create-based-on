@@ -1,9 +1,9 @@
 import type { ITemplate } from 'project-factory'
 import { extractTarball } from '../extractTarball.js'
 import { verboseFetch } from '../verboseFetch.js'
-import { fileInstaller } from './file.js'
+import { fileScaffolder } from './file.js'
 
-export async function httpInstaller(
+export async function httpScaffolder(
     address: string,
     directory: string,
     secure?: boolean | null
@@ -19,5 +19,5 @@ export async function httpInstaller(
 
     await extractTarball(response.body!, directory)
 
-    return await fileInstaller(directory, directory)
+    return await fileScaffolder(directory, directory)
 }

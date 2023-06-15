@@ -2,9 +2,9 @@ import { createReadStream, ReadStream } from 'node:fs'
 import { Readable } from 'node:stream'
 import type { ITemplate } from 'project-factory'
 import { extractTarball } from '../extractTarball.js'
-import { fileInstaller } from './file.js'
+import { fileScaffolder } from './file.js'
 
-export async function tarInstaller(archievePath: string, directory: string): Promise<ITemplate> {
+export async function tarScaffolder(archievePath: string, directory: string): Promise<ITemplate> {
     let archiveFileStream: ReadStream | null = null
 
     try {
@@ -22,5 +22,5 @@ export async function tarInstaller(archievePath: string, directory: string): Pro
             })
     }
 
-    return await fileInstaller(directory, directory)
+    return await fileScaffolder(directory, directory)
 }

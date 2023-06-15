@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import type { ITemplate } from 'project-factory'
 import { extractTarball } from '../extractTarball.js'
 import { verboseFetch } from '../verboseFetch.js'
-import { fileInstaller } from './file.js'
+import { fileScaffolder } from './file.js'
 
-export async function npmInstaller(archievePath: string, directory: string): Promise<ITemplate> {
+export async function npmScaffolder(archievePath: string, directory: string): Promise<ITemplate> {
     const versionSeparatorIndex = archievePath.lastIndexOf('@')
     const hasVersion = versionSeparatorIndex > 0.5
     const inputPackageName = hasVersion
@@ -26,7 +26,7 @@ export async function npmInstaller(archievePath: string, directory: string): Pro
 
     await extractTarball(tarResponse.body!, directory)
 
-    return await fileInstaller(directory, directory)
+    return await fileScaffolder(directory, directory)
 }
 async function findPackage(name: string): Promise<[any, string]> {
     const names = [

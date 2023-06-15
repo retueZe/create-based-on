@@ -1,20 +1,20 @@
-import { install } from './install.js'
+import { scaffold } from './scaffold.js'
 import chalk from 'chalk'
 import { parseArgs } from './parseArgs.js'
 import { resolve } from 'node:path'
 
 export default async function main(): Promise<void> {
     try {
-        const {templateLocation, installDirectory} = parseArgs()
+        const {templateLocation, prefix: prefix} = parseArgs()
 
         if (templateLocation === null) throw new Error('No template location provided.')
 
-        const absoluteInstallDirectory = resolve(installDirectory)
-        console.log(chalk`Installing {cyan ${templateLocation}} to {green ${absoluteInstallDirectory}}...`)
+        const absolutePrefix = resolve(prefix)
+        console.log(chalk`scaffolding {cyan ${templateLocation}} to {green ${absolutePrefix}}...`)
 
-        await install(templateLocation, installDirectory)
+        await scaffold(templateLocation, prefix)
 
-        console.log('Template has been successfully installed.')
+        console.log('Template has been successfully scaffolded.')
     } catch (error: any) {
         if (typeof error !== 'object' || error === null) throw error
         if (!('message' in error)) throw error
