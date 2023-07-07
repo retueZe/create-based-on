@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "create-by-template",
+  "name": "create-from-template",
   "version": "1.0.0",
   "author": "retueze",
   "license": "MIT",
@@ -19,14 +19,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/retueZe/create-by-template"
+    "url": "https://github.com/retueZe/create-from-template"
   },
   "files": [
     "dist",
     "bin"
   ],
   "bin": {
-    "create-by-template": "bin/create-by-template.js"
+    "create-from-template": "bin/create-from-template.js"
   },
   "type": "module",
   "exports": {

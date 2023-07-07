@@ -1,4 +1,4 @@
-# `project-factory` & `create-by-template`
+# `project-factory` & `create-from-template`
 
 First package is a library containing the core of the initializer. Second one provides a CLI executable compatible with `npm init`.
 
