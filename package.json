@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "create-from-template",
+  "name": "create-based-on",
   "version": "1.0.0",
   "author": "retueze",
   "license": "MIT",
@@ -19,14 +18,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/retueZe/create-from-template"
+    "url": "https://github.com/retueZe/create-based-on"
   },
   "files": [
     "dist",
     "bin"
   ],
   "bin": {
-    "create-from-template": "bin/create-from-template.js"
+    "create-based-on": "bin/create-based-on.js"
   },
   "type": "module",
   "exports": {
